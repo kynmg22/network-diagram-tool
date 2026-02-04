@@ -128,6 +128,14 @@ namespace NetworkDiagramApp
             {
                 try
                 {
+                    // デバッグ: 実行パスを確認
+                    string exePath = AppDomain.CurrentDomain.BaseDirectory;
+                    string templatePath = Path.Combine(exePath, "Template", "構成図作成_template.xlsx");
+                    
+                    AddLog($"   実行パス: {exePath}");
+                    AddLog($"   テンプレートパス: {templatePath}");
+                    AddLog($"   テンプレート存在: {File.Exists(templatePath)}");
+                    
                     ExcelTemplateGenerator.Generate(dialog.FileName);
                     AddLog($"✓ テンプレートを作成: {Path.GetFileName(dialog.FileName)}");
                     

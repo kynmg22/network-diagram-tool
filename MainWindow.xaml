@@ -23,20 +23,32 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-        <!-- タイトル -->
-        <StackPanel Grid.Row="0" Margin="0,0,0,20">
-            <TextBlock Text="ネットワーク図作成ツール" 
-                       Style="{StaticResource TitleText}"/>
-            <TextBlock Text="ExcelデータからDraw.io形式の構成図を自動生成" 
-                       Style="{StaticResource SubtitleText}"
-                       Margin="0,5,0,0"/>
-        </StackPanel>
+        <!-- タイトルエリア -->
+        <Grid Grid.Row="0" Margin="0,0,0,20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            
+            <StackPanel Grid.Column="0">
+                <TextBlock Text="ネットワーク図作成ツール" 
+                           Style="{StaticResource TitleText}"/>
+                <TextBlock Text="ExcelデータからDraw.io形式の構成図を自動生成" 
+                           Style="{StaticResource SubtitleText}"
+                           Margin="0,5,0,0"/>
+            </StackPanel>
+            
+            <Button Grid.Column="1"
+                    Content="📄 テンプレート作成"
+                    Style="{StaticResource SecondaryButton}"
+                    VerticalAlignment="Center"
+                    Padding="15,8"
+                    Click="BtnCreateTemplate_Click"/>
+        </Grid>
 
         <!-- Excelファイル選択 -->
         <Border Grid.Row="1" 
@@ -169,16 +181,8 @@
             </Grid>
         </Border>
 
-        <!-- テンプレート作成ボタン -->
-        <Button Grid.Row="3"
-                Content="📄 Excelテンプレートを作成"
-                Style="{StaticResource SecondaryButton}"
-                Height="40"
-                Margin="0,0,0,10"
-                Click="BtnCreateTemplate_Click"/>
-
         <!-- 生成ボタン -->
-        <Button Grid.Row="4"
+        <Button Grid.Row="3"
                 Content="🚀 図を生成"
                 Style="{StaticResource PrimaryButton}"
                 Height="50"
@@ -187,7 +191,7 @@
                 IsEnabled="{Binding CanGenerate}"/>
 
         <!-- プログレスバー -->
-        <Grid Grid.Row="5" Margin="0,0,0,15">
+        <Grid Grid.Row="4" Margin="0,0,0,15">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -209,7 +213,7 @@
         </Grid>
 
         <!-- ログエリア -->
-        <Border Grid.Row="6"
+        <Border Grid.Row="5"
                 Background="White" 
                 CornerRadius="8"
                 Padding="0"
@@ -249,7 +253,7 @@
         </Border>
 
         <!-- フッター -->
-        <TextBlock Grid.Row="8"
+        <TextBlock Grid.Row="6"
                    Text="© 2025 Network Diagram Generator | Version 1.0"
                    Foreground="#AAAAAA"
                    FontSize="11"
