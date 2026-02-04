@@ -13,7 +13,7 @@ namespace NetworkDiagramApp
         public static List<string> GetSheetNames(string excelPath)
         {
             var sheetNames = new List<string>();
-
+            
             try
             {
                 using var document = SpreadsheetDocument.Open(excelPath, false);
@@ -33,7 +33,7 @@ namespace NetworkDiagramApp
             {
                 // エラーは無視
             }
-
+            
             return sheetNames;
         }
 
@@ -70,7 +70,7 @@ namespace NetworkDiagramApp
                 // シートを選択
                 var sheets = workbookPart.Workbook.Descendants<DocumentFormat.OpenXml.Spreadsheet.Sheet>();
                 DocumentFormat.OpenXml.Spreadsheet.Sheet? targetSheet = null;
-
+                
                 if (!string.IsNullOrEmpty(sheetName))
                 {
                     // 指定されたシート名で検索
@@ -84,21 +84,21 @@ namespace NetworkDiagramApp
                         SafeLog(logger, $"⚠ シート「{sheetName}」が見つかりません。");
                     }
                 }
-
+                
                 if (targetSheet == null)
                 {
                     // 「構成図作成」または「構成」を探す
-                    targetSheet = sheets.FirstOrDefault(s => s.Name == "構成図作成") ??
+                    targetSheet = sheets.FirstOrDefault(s => s.Name == "構成図作成") ?? 
                                   sheets.FirstOrDefault(s => s.Name == "構成");
-
+                    
                     if (targetSheet != null)
                     {
                         SafeLog(logger, $"✓ シート「{targetSheet.Name}」を読み込みます");
                     }
                 }
-
+                
                 WorksheetPart? worksheetPart = null;
-
+                
                 if (targetSheet != null)
                 {
                     string relationshipId = targetSheet.Id?.Value ?? "";
@@ -131,14 +131,14 @@ namespace NetworkDiagramApp
 
                     // B列（ID）を取得
                     string? idValue = GetCellValue(cells, "B", workbookPart);
-
+                    
                     // デバッグ: 最初の10行を表示
                     if (rowIndex <= 10)
                     {
                         string dValue = GetCellValue(cells, "D", workbookPart) ?? "";
                         SafeLog(logger, $"   行{rowIndex}: B='{idValue ?? "(空)"}'  D='{dValue}'");
                     }
-
+                    
                     if (string.IsNullOrWhiteSpace(idValue))
                     {
                         if (dataStarted)
@@ -149,7 +149,7 @@ namespace NetworkDiagramApp
                         continue;
                     }
 
-                    if (idValue == "ここまで")
+                    if (idValue == "ここまで") 
                     {
                         SafeLog(logger, $"   → 「ここまで」マーカーを検出 (行{rowIndex})");
                         break;
@@ -157,14 +157,14 @@ namespace NetworkDiagramApp
 
                     // ヘッダー行をスキップ
                     string? parentsValue = GetCellValue(cells, "A", workbookPart);
-
+                    
                     bool isHeader = IsHeaderRow(idValue, parentsValue);
-
+                    
                     if (rowIndex <= 3)
                     {
                         SafeLog(logger, $"   A列='{parentsValue ?? "(空)"}'  ヘッダー判定={isHeader}");
                     }
-
+                    
                     if (isHeader)
                     {
                         SafeLog(logger, $"   → ヘッダー行をスキップ (行{rowIndex})");
@@ -231,7 +231,7 @@ namespace NetworkDiagramApp
             if (cell.CellFormula != null && cell.CellValue != null)
             {
                 string cachedValue = cell.CellValue.Text;
-
+                
                 // SharedStringの場合
                 if (cell.DataType != null && cell.DataType.Value == CellValues.SharedString)
                 {
@@ -246,7 +246,7 @@ namespace NetworkDiagramApp
                         }
                     }
                 }
-
+                
                 return cachedValue?.Trim();
             }
 
@@ -275,7 +275,7 @@ namespace NetworkDiagramApp
             // Text要素のみを取得（PhoneticRun要素は無視）
             var textElements = sharedString.Descendants<DocumentFormat.OpenXml.Spreadsheet.Text>();
             var textParts = new List<string>();
-
+            
             foreach (var textElement in textElements)
             {
                 // PhoneticRun内のTextは除外
@@ -284,7 +284,7 @@ namespace NetworkDiagramApp
                     textParts.Add(textElement.Text);
                 }
             }
-
+            
             return string.Join("", textParts).Trim();
         }
 
@@ -301,9 +301,9 @@ namespace NetworkDiagramApp
             {
                 return true;
             }
-
+            
             // 「機器」「IPアドレス」「VLAN」などの列名っぽい文字
-            if (idValue.Contains("機器") || idValue.Contains("名") ||
+            if (idValue.Contains("機器") || idValue.Contains("名") || 
                 idValue.Contains("アドレス") || idValue.Contains("VLAN") ||
                 idValue.Contains("備考") || idValue.Contains("接続"))
             {

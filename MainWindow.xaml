@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NetworkDiagramApp"
         mc:Ignorable="d"
-        Title="ネットワーク図作成ツール v1.0.2" 
+        Title="ネットワーク図作成ツール v1.1.0" 
         Height="600" Width="700"
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanMinimize"
@@ -26,6 +26,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <!-- タイトル -->
@@ -39,10 +40,15 @@
 
         <!-- Excelファイル選択 -->
         <Border Grid.Row="1" 
+                x:Name="DropZone"
                 Background="White" 
                 CornerRadius="8" 
                 Padding="20"
-                Margin="0,0,0,15">
+                Margin="0,0,0,15"
+                AllowDrop="True"
+                Drop="Border_Drop"
+                DragEnter="Border_DragEnter"
+                DragLeave="Border_DragLeave">
             <Border.Effect>
                 <DropShadowEffect BlurRadius="10" 
                                   ShadowDepth="2" 
@@ -80,7 +86,7 @@
                                         <Setter.Value>
                                             <VisualBrush Stretch="None" AlignmentX="Left">
                                                 <VisualBrush.Visual>
-                                                    <TextBlock Text="Excelファイルを選択してください..." 
+                                                    <TextBlock Text="Excelファイルをここにドラッグ＆ドロップ または 参照ボタンで選択..." 
                                                                Foreground="#AAAAAA" 
                                                                Margin="8,0,0,0"/>
                                                 </VisualBrush.Visual>
@@ -163,8 +169,16 @@
             </Grid>
         </Border>
 
-        <!-- 生成ボタン -->
+        <!-- テンプレート作成ボタン -->
         <Button Grid.Row="3"
+                Content="📄 Excelテンプレートを作成"
+                Style="{StaticResource SecondaryButton}"
+                Height="40"
+                Margin="0,0,0,10"
+                Click="BtnCreateTemplate_Click"/>
+
+        <!-- 生成ボタン -->
+        <Button Grid.Row="4"
                 Content="🚀 図を生成"
                 Style="{StaticResource PrimaryButton}"
                 Height="50"
@@ -173,7 +187,7 @@
                 IsEnabled="{Binding CanGenerate}"/>
 
         <!-- プログレスバー -->
-        <Grid Grid.Row="4" Margin="0,0,0,15">
+        <Grid Grid.Row="5" Margin="0,0,0,15">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -195,7 +209,7 @@
         </Grid>
 
         <!-- ログエリア -->
-        <Border Grid.Row="5"
+        <Border Grid.Row="6"
                 Background="White" 
                 CornerRadius="8"
                 Padding="0"
@@ -235,7 +249,7 @@
         </Border>
 
         <!-- フッター -->
-        <TextBlock Grid.Row="7"
+        <TextBlock Grid.Row="8"
                    Text="© 2025 Network Diagram Generator | Version 1.0"
                    Foreground="#AAAAAA"
                    FontSize="11"

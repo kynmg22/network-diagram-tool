@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ネットワーク図作成ツール")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+57f9fd008023a1529b4236883776b80cfc5770f5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2f850986ebcce6d81580ba9f9a18c5cec8e7f1af")]
 [assembly: System.Reflection.AssemblyProductAttribute("ネットワーク図作成ツール")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ネットワーク図作成ツール")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

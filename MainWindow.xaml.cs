@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.IO;
+using System.Linq;
 using System.Net.Http;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
@@ -113,6 +114,42 @@ namespace NetworkDiagramApp
         #endregion
 
         #region Event Handlers
+
+        private void BtnCreateTemplate_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new SaveFileDialog
+            {
+                Title = "Excelテンプレートを保存",
+                Filter = "Excel Files (*.xlsx)|*.xlsx",
+                FileName = "ネットワーク構成テンプレート.xlsx"
+            };
+
+            if (dialog.ShowDialog() == true)
+            {
+                try
+                {
+                    ExcelTemplateGenerator.Generate(dialog.FileName);
+                    AddLog($"✓ テンプレートを作成: {Path.GetFileName(dialog.FileName)}");
+                    
+                    var result = MessageBox.Show(
+                        $"テンプレートを作成しました！\n\n{dialog.FileName}\n\nフォルダを開きますか？",
+                        "完了",
+                        MessageBoxButton.YesNo,
+                        MessageBoxImage.Information);
+
+                    if (result == MessageBoxResult.Yes)
+                    {
+                        System.Diagnostics.Process.Start("explorer.exe", $"/select,\"{dialog.FileName}\"");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    AddLog($"✗ テンプレート作成エラー: {ex.Message}");
+                    MessageBox.Show($"テンプレート作成に失敗しました:\n\n{ex.Message}",
+                        "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
 
         private void BtnSelectExcel_Click(object sender, RoutedEventArgs e)
         {
@@ -405,6 +442,98 @@ namespace NetworkDiagramApp
                 {
                     MessageBox.Show($"ブラウザを開けませんでした: {ex.Message}",
                         "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+        }
+
+        #endregion
+
+        #region Drag and Drop
+
+        private void Border_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                e.Effects = DragDropEffects.Copy;
+                // ドロップゾーンの背景色を変更
+                if (sender is Border border)
+                {
+                    border.Background = new System.Windows.Media.SolidColorBrush(
+                        System.Windows.Media.Color.FromRgb(230, 244, 255));
+                }
+            }
+            else
+            {
+                e.Effects = DragDropEffects.None;
+            }
+            e.Handled = true;
+        }
+
+        private void Border_DragLeave(object sender, DragEventArgs e)
+        {
+            // 元の背景色に戻す
+            if (sender is Border border)
+            {
+                border.Background = System.Windows.Media.Brushes.White;
+            }
+        }
+
+        private void Border_Drop(object sender, DragEventArgs e)
+        {
+            // 元の背景色に戻す
+            if (sender is Border border)
+            {
+                border.Background = System.Windows.Media.Brushes.White;
+            }
+
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+                
+                if (files != null && files.Length > 0)
+                {
+                    string filePath = files[0];
+                    
+                    // .xlsx または .xls ファイルのみ受け付ける
+                    if (filePath.EndsWith(".xlsx", StringComparison.OrdinalIgnoreCase) ||
+                        filePath.EndsWith(".xls", StringComparison.OrdinalIgnoreCase))
+                    {
+                        ExcelPath = filePath;
+                        AddLog($"✓ ファイルをドロップ: {Path.GetFileName(filePath)}");
+                        
+                        // シート一覧を取得
+                        try
+                        {
+                            var sheets = ExcelReader.GetSheetNames(filePath);
+                            AvailableSheets = sheets;
+                            
+                            // デフォルトで「構成図作成」または「構成」を選択
+                            if (sheets.Contains("構成図作成"))
+                            {
+                                SelectedSheet = "構成図作成";
+                            }
+                            else if (sheets.Contains("構成"))
+                            {
+                                SelectedSheet = "構成";
+                            }
+                            else if (sheets.Count > 0)
+                            {
+                                SelectedSheet = sheets[0];
+                            }
+                            
+                            AddLog($"   利用可能なシート: {string.Join(", ", sheets)}");
+                            AddLog($"   選択中のシート: {SelectedSheet}");
+                        }
+                        catch (Exception ex)
+                        {
+                            AddLog($"⚠ シート一覧の取得に失敗: {ex.Message}");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Excelファイル (.xlsx または .xls) を選択してください。",
+                            "エラー", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    }
                 }
             }
         }
