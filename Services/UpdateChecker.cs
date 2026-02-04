@@ -7,9 +7,11 @@ namespace NetworkDiagramApp
 {
     public class UpdateChecker
     {
+        private const string CURRENT_VERSION = "1.0.2";
         private const string GITHUB_API_URL = "https://api.github.com/repos/{owner}/{repo}/releases/latest";
         
         // TODO: GitHubのユーザー名とリポジトリ名に置き換えてください
+        private const string GITHUB_OWNER = "kynmg22";
         private const string GITHUB_REPO = "network-diagram-tool";
 
         public class UpdateInfo
