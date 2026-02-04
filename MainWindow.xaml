@@ -5,7 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:NetworkDiagramApp"
         mc:Ignorable="d"
-        Title="ネットワーク図作成ツール v1.0.0" 
         Title="ネットワーク図作成ツール v1.0.2" 
         Height="600" Width="700"
         WindowStartupLocation="CenterScreen"
