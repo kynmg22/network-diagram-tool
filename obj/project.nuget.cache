@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "9e6aIpSn5uk=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ky-nomura\\Downloads\\NetworkDiagramApp_Source\\NetworkDiagramApp_Light\\NetworkDiagramApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ky-nomura\\.nuget\\packages\\documentformat.openxml\\3.0.2\\documentformat.openxml.3.0.2.nupkg.sha512",
+    "C:\\Users\\ky-nomura\\.nuget\\packages\\documentformat.openxml.framework\\3.0.2\\documentformat.openxml.framework.3.0.2.nupkg.sha512",
+    "C:\\Users\\ky-nomura\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.77\\microsoft.xaml.behaviors.wpf.1.1.77.nupkg.sha512",
+    "C:\\Users\\ky-nomura\\.nuget\\packages\\system.io.packaging\\8.0.0\\system.io.packaging.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
