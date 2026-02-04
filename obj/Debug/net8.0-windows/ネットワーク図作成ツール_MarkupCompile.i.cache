@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\ky-nomura\Downloads\NetworkDiagramApp_Source\NetworkDiagramApp_Light\obj\Debug\net8.0-windows\
+C:\Users\ky-nomura\Documents\NetworkDiagramApp\obj\Debug\net8.0-windows\
 NetworkDiagramApp
 none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
-C:\Users\ky-nomura\Downloads\NetworkDiagramApp_Source\NetworkDiagramApp_Light\App.xaml
+C:\Users\ky-nomura\Documents\NetworkDiagramApp\App.xaml
 11407045341
 
 121452953035
 2011113815990
 MainWindow.xaml;
 
-True
+False
 

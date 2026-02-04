@@ -182,11 +182,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ky-nomura\\Downloads\\NetworkDiagramApp_Source\\NetworkDiagramApp_Light\\NetworkDiagramApp.csproj",
+      "projectUniqueName": "C:\\Users\\ky-nomura\\Documents\\NetworkDiagramApp\\NetworkDiagramApp.csproj",
       "projectName": "ネットワーク図作成ツール",
-      "projectPath": "C:\\Users\\ky-nomura\\Downloads\\NetworkDiagramApp_Source\\NetworkDiagramApp_Light\\NetworkDiagramApp.csproj",
+      "projectPath": "C:\\Users\\ky-nomura\\Documents\\NetworkDiagramApp\\NetworkDiagramApp.csproj",
       "packagesPath": "C:\\Users\\ky-nomura\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ky-nomura\\Downloads\\NetworkDiagramApp_Source\\NetworkDiagramApp_Light\\obj\\",
+      "outputPath": "C:\\Users\\ky-nomura\\Documents\\NetworkDiagramApp\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -6,6 +6,7 @@
         xmlns:local="clr-namespace:NetworkDiagramApp"
         mc:Ignorable="d"
         Title="ネットワーク図作成ツール v1.0.0" 
+        Title="ネットワーク図作成ツール v1.0.2" 
         Height="600" Width="700"
         WindowStartupLocation="CenterScreen"
         ResizeMode="CanMinimize"
