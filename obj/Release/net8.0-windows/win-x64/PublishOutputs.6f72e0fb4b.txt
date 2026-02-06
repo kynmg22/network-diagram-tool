@@ -1,2 +1,0 @@
-C:\Users\ky-nomura\Downloads\NetworkDiagramApp_Source\NetworkDiagramApp_Light\bin\Release\net8.0-windows\win-x64\publish\ネットワーク図作成ツール.pdb
-C:\Users\ky-nomura\Downloads\NetworkDiagramApp_Source\NetworkDiagramApp_Light\bin\Release\net8.0-windows\win-x64\publish\ネットワーク図作成ツール.exe

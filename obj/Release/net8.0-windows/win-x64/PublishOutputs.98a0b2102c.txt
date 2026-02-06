@@ -1,2 +1,3 @@
 C:\Users\ky-nomura\Documents\NetworkDiagramApp\bin\Release\net8.0-windows\win-x64\publish\ネットワーク図作成ツール.pdb
+C:\Users\ky-nomura\Documents\NetworkDiagramApp\bin\Release\net8.0-windows\win-x64\publish\Template\構成図作成_template.xlsx
 C:\Users\ky-nomura\Documents\NetworkDiagramApp\bin\Release\net8.0-windows\win-x64\publish\ネットワーク図作成ツール.exe

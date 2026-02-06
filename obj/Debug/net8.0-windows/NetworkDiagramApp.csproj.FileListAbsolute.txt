@@ -1,40 +1,13 @@
-C:\Users\ky-nomura\Downloads\NetworkDiagramApp_v1.2 (1)\NetworkDiagramApp_v1.2\bin\Debug\net8.0-windows\ネットワーク図作成ツール.exe
-C:\Users\ky-nomura\Downloads\NetworkDiagramApp_v1.2 (1)\NetworkDiagramApp_v1.2\bin\Debug\net8.0-windows\ネットワーク図作成ツール.deps.json
-C:\Users\ky-nomura\Downloads\NetworkDiagramApp_v1.2 (1)\NetworkDiagramApp_v1.2\bin\Debug\net8.0-windows\ネットワーク図作成ツール.runtimeconfig.json
-C:\Users\ky-nomura\Downloads\NetworkDiagramApp_v1.2 (1)\NetworkDiagramApp_v1.2\bin\Debug\net8.0-windows\ネットワーク図作成ツール.dll
-C:\Users\ky-nomura\Downloads\NetworkDiagramApp_v1.2 (1)\NetworkDiagramApp_v1.2\bin\Debug\net8.0-windows\ネットワーク図作成ツール.pdb
-C:\Users\ky-nomura\Downloads\NetworkDiagramApp_v1.2 (1)\NetworkDiagramApp_v1.2\bin\Debug\net8.0-windows\DocumentFormat.OpenXml.dll
-C:\Users\ky-nomura\Downloads\NetworkDiagramApp_v1.2 (1)\NetworkDiagramApp_v1.2\bin\Debug\net8.0-windows\DocumentFormat.OpenXml.Framework.dll
-C:\Users\ky-nomura\Downloads\NetworkDiagramApp_v1.2 (1)\NetworkDiagramApp_v1.2\bin\Debug\net8.0-windows\Microsoft.Xaml.Behaviors.dll
-C:\Users\ky-nomura\Downloads\NetworkDiagramApp_v1.2 (1)\NetworkDiagramApp_v1.2\obj\Debug\net8.0-windows\NetworkDiagramApp.csproj.AssemblyReference.cache
-C:\Users\ky-nomura\Downloads\NetworkDiagramApp_v1.2 (1)\NetworkDiagramApp_v1.2\obj\Debug\net8.0-windows\App.baml
-C:\Users\ky-nomura\Downloads\NetworkDiagramApp_v1.2 (1)\NetworkDiagramApp_v1.2\obj\Debug\net8.0-windows\MainWindow.g.cs
-C:\Users\ky-nomura\Downloads\NetworkDiagramApp_v1.2 (1)\NetworkDiagramApp_v1.2\obj\Debug\net8.0-windows\App.g.cs
-C:\Users\ky-nomura\Downloads\NetworkDiagramApp_v1.2 (1)\NetworkDiagramApp_v1.2\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
-C:\Users\ky-nomura\Downloads\NetworkDiagramApp_v1.2 (1)\NetworkDiagramApp_v1.2\obj\Debug\net8.0-windows\ネットワーク図作成ツール_MarkupCompile.cache
-C:\Users\ky-nomura\Downloads\NetworkDiagramApp_v1.2 (1)\NetworkDiagramApp_v1.2\obj\Debug\net8.0-windows\ネットワーク図作成ツール_MarkupCompile.lref
-C:\Users\ky-nomura\Downloads\NetworkDiagramApp_v1.2 (1)\NetworkDiagramApp_v1.2\obj\Debug\net8.0-windows\MainWindow.baml
-C:\Users\ky-nomura\Downloads\NetworkDiagramApp_v1.2 (1)\NetworkDiagramApp_v1.2\obj\Debug\net8.0-windows\ネットワーク図作成ツール.g.resources
-C:\Users\ky-nomura\Downloads\NetworkDiagramApp_v1.2 (1)\NetworkDiagramApp_v1.2\obj\Debug\net8.0-windows\NetworkDiagramApp.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\ky-nomura\Downloads\NetworkDiagramApp_v1.2 (1)\NetworkDiagramApp_v1.2\obj\Debug\net8.0-windows\NetworkDiagramApp.AssemblyInfoInputs.cache
-C:\Users\ky-nomura\Downloads\NetworkDiagramApp_v1.2 (1)\NetworkDiagramApp_v1.2\obj\Debug\net8.0-windows\NetworkDiagramApp.AssemblyInfo.cs
-C:\Users\ky-nomura\Downloads\NetworkDiagramApp_v1.2 (1)\NetworkDiagramApp_v1.2\obj\Debug\net8.0-windows\NetworkDiagramApp.csproj.CoreCompileInputs.cache
-C:\Users\ky-nomura\Downloads\NetworkDiagramApp_v1.2 (1)\NetworkDiagramApp_v1.2\obj\Debug\net8.0-windows\NetworkD.8C1B1ECC.Up2Date
-C:\Users\ky-nomura\Downloads\NetworkDiagramApp_v1.2 (1)\NetworkDiagramApp_v1.2\obj\Debug\net8.0-windows\ネットワーク図作成ツール.dll
-C:\Users\ky-nomura\Downloads\NetworkDiagramApp_v1.2 (1)\NetworkDiagramApp_v1.2\obj\Debug\net8.0-windows\refint\ネットワーク図作成ツール.dll
-C:\Users\ky-nomura\Downloads\NetworkDiagramApp_v1.2 (1)\NetworkDiagramApp_v1.2\obj\Debug\net8.0-windows\ネットワーク図作成ツール.pdb
-C:\Users\ky-nomura\Downloads\NetworkDiagramApp_v1.2 (1)\NetworkDiagramApp_v1.2\obj\Debug\net8.0-windows\NetworkDiagramApp.genruntimeconfig.cache
-C:\Users\ky-nomura\Downloads\NetworkDiagramApp_v1.2 (1)\NetworkDiagramApp_v1.2\obj\Debug\net8.0-windows\ref\ネットワーク図作成ツール.dll
 C:\Users\ky-nomura\Documents\NetworkDiagramApp\obj\Debug\net8.0-windows\NetworkDiagramApp.csproj.AssemblyReference.cache
+C:\Users\ky-nomura\Documents\NetworkDiagramApp\obj\Debug\net8.0-windows\CompletionDialog.baml
 C:\Users\ky-nomura\Documents\NetworkDiagramApp\obj\Debug\net8.0-windows\App.baml
+C:\Users\ky-nomura\Documents\NetworkDiagramApp\obj\Debug\net8.0-windows\CompletionDialog.g.cs
 C:\Users\ky-nomura\Documents\NetworkDiagramApp\obj\Debug\net8.0-windows\MainWindow.g.cs
 C:\Users\ky-nomura\Documents\NetworkDiagramApp\obj\Debug\net8.0-windows\App.g.cs
 C:\Users\ky-nomura\Documents\NetworkDiagramApp\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
 C:\Users\ky-nomura\Documents\NetworkDiagramApp\obj\Debug\net8.0-windows\ネットワーク図作成ツール_MarkupCompile.cache
 C:\Users\ky-nomura\Documents\NetworkDiagramApp\obj\Debug\net8.0-windows\ネットワーク図作成ツール_MarkupCompile.lref
-C:\Users\ky-nomura\Documents\NetworkDiagramApp\obj\Debug\net8.0-windows\ネットワーク図作成ツール.dll
-C:\Users\ky-nomura\Documents\NetworkDiagramApp\obj\Debug\net8.0-windows\refint\ネットワーク図作成ツール.dll
-C:\Users\ky-nomura\Documents\NetworkDiagramApp\obj\Debug\net8.0-windows\ネットワーク図作成ツール.pdb
+C:\Users\ky-nomura\Documents\NetworkDiagramApp\bin\Debug\net8.0-windows\Template\構成図作成_template.xlsx
 C:\Users\ky-nomura\Documents\NetworkDiagramApp\bin\Debug\net8.0-windows\ネットワーク図作成ツール.exe
 C:\Users\ky-nomura\Documents\NetworkDiagramApp\bin\Debug\net8.0-windows\ネットワーク図作成ツール.deps.json
 C:\Users\ky-nomura\Documents\NetworkDiagramApp\bin\Debug\net8.0-windows\ネットワーク図作成ツール.runtimeconfig.json
@@ -51,5 +24,8 @@ C:\Users\ky-nomura\Documents\NetworkDiagramApp\obj\Debug\net8.0-windows\NetworkD
 C:\Users\ky-nomura\Documents\NetworkDiagramApp\obj\Debug\net8.0-windows\NetworkDiagramApp.csproj.CoreCompileInputs.cache
 C:\Users\ky-nomura\Documents\NetworkDiagramApp\obj\Debug\net8.0-windows\NetworkDiagramApp.sourcelink.json
 C:\Users\ky-nomura\Documents\NetworkDiagramApp\obj\Debug\net8.0-windows\NetworkD.8C1B1ECC.Up2Date
+C:\Users\ky-nomura\Documents\NetworkDiagramApp\obj\Debug\net8.0-windows\ネットワーク図作成ツール.dll
+C:\Users\ky-nomura\Documents\NetworkDiagramApp\obj\Debug\net8.0-windows\refint\ネットワーク図作成ツール.dll
+C:\Users\ky-nomura\Documents\NetworkDiagramApp\obj\Debug\net8.0-windows\ネットワーク図作成ツール.pdb
 C:\Users\ky-nomura\Documents\NetworkDiagramApp\obj\Debug\net8.0-windows\NetworkDiagramApp.genruntimeconfig.cache
 C:\Users\ky-nomura\Documents\NetworkDiagramApp\obj\Debug\net8.0-windows\ref\ネットワーク図作成ツール.dll

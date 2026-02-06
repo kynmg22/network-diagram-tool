@@ -115,6 +115,28 @@ namespace NetworkDiagramApp
 
         #region Event Handlers
 
+        /// <summary>
+        /// draw.io ダウンロードボタン
+        /// </summary>
+        private void BtnDownloadDrawIO_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                string url = "https://github.com/jgraph/drawio-desktop/releases";
+                System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                {
+                    FileName = url,
+                    UseShellExecute = true
+                });
+                AddLog("🔗 draw.io ダウンロードページを開きました");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"ブラウザを開けませんでした:\n\n{ex.Message}",
+                    "エラー", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
         private void BtnCreateTemplate_Click(object sender, RoutedEventArgs e)
         {
             var dialog = new SaveFileDialog
@@ -203,6 +225,95 @@ namespace NetworkDiagramApp
             }
         }
 
+        private void BtnSelectMultipleExcel_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new OpenFileDialog
+            {
+                Title = "Excelファイルを複数選択してください",
+                Filter = "Excel Files (*.xlsx)|*.xlsx|All Files (*.*)|*.*",
+                FilterIndex = 1,
+                Multiselect = true
+            };
+
+            if (dialog.ShowDialog() == true)
+            {
+                if (dialog.FileNames.Length == 0) return;
+
+                AddLog($"✓ {dialog.FileNames.Length}個のファイルを選択");
+                
+                var result = MessageBox.Show(
+                    $"{dialog.FileNames.Length}個のファイルを一括処理します。\n\n" +
+                    $"各ファイルから「{(SelectedSheet ?? "構成")}」シートを読み込み、\n" +
+                    $"同じフォルダに図を生成します。\n\n" +
+                    $"実行しますか？",
+                    "一括処理の確認",
+                    MessageBoxButton.YesNo,
+                    MessageBoxImage.Question);
+
+                if (result == MessageBoxResult.Yes)
+                {
+                    _ = ProcessMultipleFilesAsync(dialog.FileNames);
+                }
+            }
+        }
+
+        private async Task ProcessMultipleFilesAsync(string[] filePaths)
+        {
+            IsProcessing = true;
+            int successCount = 0;
+            int failCount = 0;
+
+            try
+            {
+                for (int i = 0; i < filePaths.Length; i++)
+                {
+                    string filePath = filePaths[i];
+                    string fileName = Path.GetFileName(filePath);
+                    
+                    AddLog($"\n[{i + 1}/{filePaths.Length}] 処理中: {fileName}");
+
+                    try
+                    {
+                        // 出力ファイル名を生成
+                        string outputFileName = Path.GetFileNameWithoutExtension(filePath) + ".drawio";
+                        string outputPath = Path.Combine(Path.GetDirectoryName(filePath) ?? "", outputFileName);
+
+                        // 一時的にパスを設定
+                        string originalPath = ExcelPath;
+                        ExcelPath = filePath;
+
+                        // 図を生成（非同期）
+                        await Task.Run(() => GenerateDrawIO(filePath, outputPath, SelectedSheet ?? "構成"));
+
+                        // パスを戻す
+                        ExcelPath = originalPath;
+
+                        AddLog($"  ✓ 完了: {outputFileName}");
+                        successCount++;
+                    }
+                    catch (Exception ex)
+                    {
+                        AddLog($"  ✗ エラー: {ex.Message}");
+                        failCount++;
+                    }
+                }
+
+                AddLog($"\n一括処理完了: 成功 {successCount}件, 失敗 {failCount}件");
+                
+                MessageBox.Show(
+                    $"一括処理が完了しました。\n\n" +
+                    $"成功: {successCount}件\n" +
+                    $"失敗: {failCount}件",
+                    "完了",
+                    MessageBoxButton.OK,
+                    successCount == filePaths.Length ? MessageBoxImage.Information : MessageBoxImage.Warning);
+            }
+            finally
+            {
+                IsProcessing = false;
+            }
+        }
+
         private async void BtnGenerate_Click(object sender, RoutedEventArgs e)
         {
             if (string.IsNullOrEmpty(ExcelPath))
@@ -236,6 +347,24 @@ namespace NetworkDiagramApp
 
                 string outputPath = Path.Combine(outputDir, outputName);
 
+                // 上書き確認
+                if (File.Exists(outputPath))
+                {
+                    var overwriteResult = MessageBox.Show(
+                        $"ファイルが既に存在します:\n\n{outputPath}\n\n上書きしますか？",
+                        "上書き確認",
+                        MessageBoxButton.YesNo,
+                        MessageBoxImage.Warning);
+
+                    if (overwriteResult == MessageBoxResult.No)
+                    {
+                        AddLog("⚠ 処理をキャンセルしました（ファイルが既に存在）");
+                        StatusText = "キャンセル";
+                        IsProcessing = false;
+                        return;
+                    }
+                }
+
                 AddLog("");
                 AddLog("========================================");
                 AddLog("図の生成を開始します...");
@@ -260,15 +389,29 @@ namespace NetworkDiagramApp
                 AddLog("========================================");
                 StatusText = "完了！";
 
-                var result = MessageBox.Show(
-                    $"図の生成が完了しました！\n\n{outputPath}\n\nフォルダを開きますか？",
-                    "完了",
-                    MessageBoxButton.YesNo,
-                    MessageBoxImage.Information);
+                // 完了ダイアログ（3択）
+                var completionDialog = new CompletionDialog(outputPath);
+                var dialogResult = completionDialog.ShowDialog();
 
-                if (result == MessageBoxResult.Yes)
+                if (dialogResult == true)
                 {
-                    System.Diagnostics.Process.Start("explorer.exe", $"/select,\"{outputPath}\"");
+                    // ユーザーの選択に応じて処理
+                    switch (completionDialog.UserChoice)
+                    {
+                        case CompletionChoice.OpenFolder:
+                            System.Diagnostics.Process.Start("explorer.exe", $"/select,\"{outputPath}\"");
+                            break;
+                        case CompletionChoice.OpenFile:
+                            System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo
+                            {
+                                FileName = outputPath,
+                                UseShellExecute = true
+                            });
+                            break;
+                        case CompletionChoice.Close:
+                            // 何もしない
+                            break;
+                    }
                 }
             }
             catch (Exception ex)
